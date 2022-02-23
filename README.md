@@ -1,4 +1,4 @@
 # so_long
 
 
-![](.assets/img/3.png)
+![](https://github.com/avoreshin/so_long/edit/develop/assets/img/3.png)
