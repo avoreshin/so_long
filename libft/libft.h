@@ -22,6 +22,10 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
+char	*ft_strcpy(char *dst, const char *src);
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
+int		get_next_line(int fd, char **line);
+int		ft_strcmp(const char *str1, const char *str2);
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memcpy(void *dst, const void *src, size_t n);

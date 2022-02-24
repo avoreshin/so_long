@@ -11,7 +11,8 @@ SRCS			=	ft_atoi.c		ft_bzero.c		ft_calloc.c				\
 					ft_strlcat.c	ft_strlcpy.c	ft_strlen.c				\
 					ft_strmapi.c	ft_strncmp.c	ft_strnstr.c			\
 					ft_strrchr.c	ft_strtrim.c	ft_substr.c				\
-					ft_tolower.c	ft_toupper.c							\
+					ft_tolower.c	ft_toupper.c	ft_strcmp.c				\
+					get_next_line.c	ft_strlcpy.c					\
 
 OBJS			= $(SRCS:.c=.o)
 
@@ -27,7 +28,7 @@ CFLAGS			= -Wall -Wextra -Werror
 NAME			= libft.a
 
 all:			$(NAME)
-			@say -v Yuri 'Твоя либа готова, господин'
+			@#say -v Yuri 'Твоя либа готова, господин'
 
 $(NAME):		$(OBJS) $(INC)
 				ar rcs $(NAME) $(OBJS)
