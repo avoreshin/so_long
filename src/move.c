@@ -6,7 +6,7 @@
 /*   By: jlamonic <jlamonic@student.42.fr> >        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 17:42:27 by jlamonic          #+#    #+#             */
-/*   Updated: 2021/10/19 21:59:44 by jlamonic         ###   ########.fr       */
+/*   Updated: 2022/02/25 12:13:49 by jlamonic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,15 @@ int	ft_close(t_struct *map, char mes_code)
 		if (res == 0)
 		{
 			system(" kill $(ps | grep tea | head -n 1 | awk '{print $1}')");
-			system("afplay sounds/kotik.mp3");
+			system("afplay ./assets/sound/game-over.mp3");
 			exit(0);
 		}
 		ft_putendl_fd("You win", 1);
 	}
 	else if (mes_code == 'D')
+	{
 		ft_putendl_fd("You were eaten", 1);
+	}
 	exit(EXIT_SUCCESS);
 }
 
@@ -74,7 +76,7 @@ void	ft_lets_moving(t_struct *map, int x, int y)
 		if (res == 0)
 		{
 			system(" kill $(ps | grep tea | head -n 1 | awk '{print $1}')");
-			system("afplay ./assets/sounds/coin.mp3");
+			system("afplay ./assets/sound/coin.mp3");
 			exit(0);
 		}
 		ft_moving(map, x, y);

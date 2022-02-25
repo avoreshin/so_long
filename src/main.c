@@ -12,6 +12,25 @@
 
 #include "../include/so_long.h"
 
+void	ft_exit(t_struct *map)
+{
+	int	w;
+	int	l;
+
+	w = 0;
+	while (map->str[w])
+	{
+		l = 0;
+		while (map->str[w][l])
+		{
+			if (map->str[w][l] == 'E')
+				ft_put_image('E', map, w, l);
+			l++;
+		}
+		w++;
+	}
+}
+
 void	ft_error(char *str)
 {
 	ft_putstr_fd(str, 1);

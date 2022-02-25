@@ -6,7 +6,7 @@
 /*   By: jlamonic <jlamonic@student.42.fr> >        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 17:42:27 by jlamonic          #+#    #+#             */
-/*   Updated: 2021/10/19 21:59:44 by jlamonic         ###   ########.fr       */
+/*   Updated: 2022/02/25 12:27:22 by jlamonic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,32 @@ void	ft_init_map(t_struct *map)
 	map->img_earth = find_image("./assets/img/cover.xpm");
 }
 
+void	which_image(t_struct *map, int w, int l)
+{
+	if (map->str[w][l] == 'D' && map->frame > 24)
+		ft_put_image('D', map, w, l);
+	else if (map->str[w][l] == 'D' && map->frame <= 24)
+		ft_put_image('X', map, w, l);
+	if (map->str[w][l] == 'C' && map->frame > 36)
+		ft_put_image('C', map, w, l);
+	else if (map->str[w][l] == 'C' && map->frame > 24)
+		ft_put_image('Q', map, w, l);
+	else if (map->str[w][l] == 'C' && map->frame <= 24 \
+			&& map->frame > 12)
+		ft_put_image('W', map, w, l);
+	else if (map->str[w][l] == 'C' && map->frame <= 12)
+		ft_put_image('R', map, w, l);
+	if (map->str[w][l] == 'P' && map->frame > 24)
+		ft_put_image('Z', map, w, l);
+	else if (map->str[w][l] == 'P' && map->frame <= 24)
+		ft_put_image('V', map, w, l);
+	if (map->str[w][l] == 'P' && map->frame > 24 && map->flag == 1)
+		ft_put_image('B', map, w, l);
+	else if (map->str[w][l] == 'P' && map->frame <= 24 \
+			&& map->flag == 1)
+		ft_put_image('N', map, w, l);
+}
+
 int	ft_patrol_animation(t_struct *map)
 {
 	int	w;
@@ -71,36 +97,10 @@ int	ft_patrol_animation(t_struct *map)
 		l = 0;
 		while (map->str[w][l])
 		{
-			if (map->str[w][l] == 'D' && map->frame > 24)
-				ft_put_image('D', map, w, l);
-			else if (map->str[w][l] == 'D' && map->frame <= 24)
-				ft_put_image('X', map, w, l);
-			if (map->str[w][l] == 'C' && map->frame > 36)
-				ft_put_image('C', map, w, l);
-			else if (map->str[w][l] == 'C' && map->frame > 24)
-				ft_put_image('Q', map, w, l);
-			else if (map->str[w][l] == 'C' && map->frame <= 24 && map->frame > 12)
-				ft_put_image('W', map, w, l);
-			else if (map->str[w][l] == 'C' && map->frame <= 12)
-				ft_put_image('R', map, w, l);
-			if (map->str[w][l] == 'P' && map->frame > 24)
-				ft_put_image('Z', map, w, l);
-			else if (map->str[w][l] == 'P' && map->frame <= 24)
-				ft_put_image('V', map, w, l);
-			if (map->str[w][l] == 'P' && map->frame > 24 && map->flag == 1)
-				ft_put_image('B', map, w, l);
-			else if (map->str[w][l] == 'P' && map->frame <= 24 && map->flag == 1)
-				ft_put_image('N', map, w, l);
+			which_image(map, w, l);
 			l++;
 		}
 		w++;
 	}
 	return (0);
-}
-
-int	ft_close_x(t_struct *map)
-{
-	mlx_destroy_window(map->mlx, map->new_window);
-	ft_putendl_fd("You closed window", 1);
-	exit(EXIT_SUCCESS);
 }
