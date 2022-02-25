@@ -12,10 +12,11 @@
 
 #include "libft.h"
 #define BUFFER_SIZE 1
+
 char	*next_line(char **start_l, char **line)
 {
 	char		*ptr2;
-	
+
 	ptr2 = NULL;
 	if (*start_l)
 	{
@@ -42,7 +43,7 @@ char	*next_line(char **start_l, char **line)
 char	*find_n(char **p, char **start_l, char **line, char *buf)
 {
 	char		*copy;
-	
+
 	*p = ft_strchr(buf, '\n');
 	if (*p)
 	{
@@ -62,7 +63,7 @@ int	get_next_line(int fd, char **line)
 	int			count;
 	static char	*start_l;
 	char		*p;
-	
+
 	if (fd < 0 || BUFFER_SIZE < 1 || !line || read(fd, 0, 0) < 0)
 		return (-1);
 	buf = (char *)malloc(sizeof(*buf) * (BUFFER_SIZE + 1));

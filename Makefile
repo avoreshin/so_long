@@ -1,4 +1,3 @@
-
 NAME		=	so_long
 
 SRCS_FILES	=	${shell find ./src -name "*.c"}
